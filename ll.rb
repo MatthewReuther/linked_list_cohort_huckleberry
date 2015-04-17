@@ -8,10 +8,21 @@ payloads = ARGV # ARGV holds the command line arguments that were passed in
 ll = LinkedList.new
 
 # And, populate it
-#
-# <YOUR CODE GOES HERE>
+
+payloads.each do |payload|
+  ll.push payload
+end
+
+print "* -> "
+
+payloads.size.times do |i|
+  print "#{ll.get(i).inspect} -> "
+end
+
+print "nil"
 
 
-# Then, print it out
-#
-# <YOUR CODE GOES HERE>
+
+
+
+
