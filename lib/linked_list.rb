@@ -3,8 +3,12 @@ require_relative 'linked_list_item'
 class LinkedList
   attr_reader :size
 
-  def initialize
+  def initialize(*args) #* args will always be an array and globs everything together
     @size = 0
+    args.each do |item|
+      push (item)
+    end
+
   end
 
   def get(index)
@@ -13,7 +17,7 @@ class LinkedList
       @first_item.payload
     else
       current_node = @first_item
-      index.times do
+      index.times do #loop
         raise IndexError if current_node.nil? or current_node.last?
         current_node = current_node.next_item
       end
@@ -37,7 +41,17 @@ class LinkedList
     @size += 1
     @last_item = new_item
   end
+
+  def to_s
+    str = "| "
+    current_item = @first_item
+    until current_item.nil?
+      str << current_item.payload
+      punctuation = current_item.last? ? " " : ", "
+      str << punctuation
+      current_item = current_item.next_item
+    end
+    str << "|"
+    str
+  end
 end
-
-
-
