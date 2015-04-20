@@ -42,6 +42,10 @@ class LinkedList
     @last_item = new_item
   end
 
+  def [](size)
+    get(size)
+  end
+
   def to_s
     str = "| "
     current_item = @first_item
