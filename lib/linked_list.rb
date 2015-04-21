@@ -71,6 +71,20 @@ class LinkedList
     @last_item = new_item
   end
 
+  def delete(index)
+    raise IndexError if @first_item.nil? || index < 0
+    @size -= 1
+    current_node = @first_item
+    if index > 0
+      (index - 1).times do
+        current_node = current_node.next_item
+      end
+       current_node.next_item = current_node.next_item.next_item
+    elsif index <= 0
+      @first_item = current_node.next_item
+    end
+  end
+
   def to_s
     str = "| "
     current_item = @first_item
